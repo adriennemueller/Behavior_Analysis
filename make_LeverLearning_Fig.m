@@ -90,10 +90,19 @@ function rslt = findCorrectSwitches( tes, ems )
             numSwitches = numSwitches+1;
         end
         
+        if sum((122 == trial1ems)) && sum((122 == trial2ems)) && sum((123 == trial3ems))
+            numSwitches = numSwitches+1;
+        end
+        
         if sum((123 == trial1ems)) && sum((123 == trial2ems)) && ~isempty(strfind(trial3ems', [121 124]))
             numSwitches = numSwitches+1;
         end
-            
+
+        if sum((123 == trial1ems)) && sum((123 == trial2ems)) && sum((122 == trial3ems))
+            numSwitches = numSwitches+1;
+        end
+
+        
     end
 
     targs = [];
@@ -101,6 +110,8 @@ function rslt = findCorrectSwitches( tes, ems )
     for i = 1:length(tes)
         trialems = cell2mat(ems(i));
         if ~isempty(strfind(trialems', [121 124]))
+            targs = [targs 2];
+        elseif sum((122 == trialems))
             targs = [targs 2];
         elseif sum((123 == trialems))
             targs = [targs 1];
@@ -149,8 +160,8 @@ function fig = makeLongestRunPlot( lRuns )
 
     xlabel( 'Day', 'FontSize', 18, 'FontWeight', 'bold' );
     ylabel( 'Longest Run of Corrects', 'FontSize', 18, 'FontWeight', 'bold' );
-    set( gca, 'YTick', [5, 10, 15, 20, 25, 30], 'FontSize', 16, 'FontWeight', 'bold');
-    ylim([0 30]);
+    set( gca, 'YTick', [20, 40, 60], 'FontSize', 16, 'FontWeight', 'bold');
+    ylim([0 60]);
     
     fig = P;
 end
