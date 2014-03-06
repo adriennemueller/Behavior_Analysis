@@ -11,8 +11,8 @@ function fig = make_LeverLearning_Fig( LP )
     %Calculate Values for Plotting
     
     for i = 1:length(te)
-        te(i).FPs = sum(te(i).TrialErrors == 2); %Pressed when shouldn't have
-        te(i).FNs = sum(te(i).TrialErrors == 3); %Did not press when should have
+        te(i).FPs = sum(te(i).TrialErrors == 3); %Released when shouldn't have
+        te(i).FNs = sum(te(i).TrialErrors == 4); %Did not release when should have
         te(i).Corrects = sum(te(i).TrialErrors == 0);
         te(i).Fails = sum(te(i).TrialErrors == 1); %Failed to Initiate Trial by Pressing Lever
         te(i).N = length(te(i).TrialErrors);

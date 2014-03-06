@@ -1,14 +1,13 @@
 function rslt = make_LP_struct()
 
 % File Directory Information
-    directory = '/Volumes/data/RigD/Garf/Lever_Training/';
 
-    files_list = {  'Experiment-garf-02-21-2014.bhv', ...
-                    'Experiment-garf-02-24-2014(01).bhv', ...
-                    'Experiment-garf-02-25-2014.bhv', ...
-                    'Experiment-garf-02-26-2014(06).bhv', ...
-                    'Experiment-garf-02-27-2014.bhv', ...
-                    'Experiment-garf-03-03-2014.bhv'
+    path(path,'../monkeylogic');
+
+    directory = '/Users/eddi/Documents/MATLAB/monkeylogic/lp/';
+
+    files_list = {  'Experiment-garf-03-04-2014(01).bhv', ...
+                    'Experiment-garf-03-05-2014.bhv'
                  };
 
     % Load Bhv File
