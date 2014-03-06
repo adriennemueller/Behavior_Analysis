@@ -5,7 +5,8 @@ function fig = make_LeverLearning_Fig( LP )
 
     % Extract trialerror info for new te struct
     for i = 1:length(LP)
-        te(i).TrialErrors = LP(i).TrialError;       
+        te(i).TrialErrors = LP(i).TrialError;
+        te(i).CodeNumbers = LP(i).CodeNumbers;
     end
     
     %Calculate Values for Plotting
@@ -19,22 +20,26 @@ function fig = make_LeverLearning_Fig( LP )
     
     
         te(i).LongestRun = findLongestRun( te(i).TrialErrors );
-        % te(i).CorrectSwitches = findCorrectSwitches( te(i).TrialErrors );
+        te(i).CorrectSwitches = findCorrectSwitches( te(i).TrialErrors, te(i).CodeNumbers );
     end
 
 
     assignin( 'base', 'tes', te );
     
     % Make plots
-    %figure();
     
-    subplot(1,2,1)
+    
+    subplot(1,3,1)
     panel1 = makeFractionPlot( te );
     
-    subplot(1,2,2)
+    subplot(1,3,2)
     panel2 = makeLongestRunPlot([te.LongestRun] );
     
+    subplot(1,3,3)
+    panel3 = makeCorrectSwitchesPlot([te.CorrectSwitches] );
     
+    
+    set(gcf, 'Position', [0 0 1200 600]);
     
         % Relative frequency of correct / false positives / false negatives
         % Longest run of correct
@@ -66,10 +71,49 @@ function rslt = findLongestRun( tes )
 end
 
 
-function rslt = findCorrectSwitches( tes )
-
+function rslt = findCorrectSwitches( tes, ems )
     
+    numSwitches = 0;
 
+    %find sequences of 3 correct in a row
+    CorrIdxs = strfind( tes', [0 0 0] );
+
+    for i = 1:length( CorrIdxs )
+        
+        %Look at eventmarkers for each of those three trials
+        trial1ems = cell2mat(ems(CorrIdxs(i)));
+        trial2ems = cell2mat(ems(CorrIdxs(i)+1));
+        trial3ems = cell2mat(ems(CorrIdxs(i)+2));
+        
+        
+        if ~isempty(strfind(trial1ems', [121 124])) && ~isempty(strfind(trial2ems', [121 124])) && sum((123 == trial3ems))
+            numSwitches = numSwitches+1;
+        end
+        
+        if sum((123 == trial1ems)) && sum((123 == trial2ems)) && ~isempty(strfind(trial3ems', [121 124]))
+            numSwitches = numSwitches+1;
+        end
+            
+    end
+
+    targs = [];
+    %Look at every trial and determine whether targ 1 or targ 2 was shown
+    for i = 1:length(tes)
+        trialems = cell2mat(ems(i));
+        if ~isempty(strfind(trialems', [121 124]))
+            targs = [targs 2];
+        elseif sum((123 == trialems))
+            targs = [targs 1];
+        end
+    end
+    
+    switches1 = strfind( targs, [1 1 2]);
+    switches2 = strfind( targs, [2 2 1]);
+    
+    totalswitches = length(switches1) + length(switches2);
+    
+    rslt = numSwitches / totalswitches;
+    
 end
 
 
@@ -108,8 +152,19 @@ function fig = makeLongestRunPlot( lRuns )
     set( gca, 'YTick', [5, 10, 15, 20, 25, 30], 'FontSize', 16, 'FontWeight', 'bold');
     ylim([0 30]);
     
-
     fig = P;
 end
 
+
+function fig = makeCorrectSwitchesPlot( corrSwchs )
+
+    P = plot(corrSwchs, 'k-', 'LineWidth', 2 );
+
+    xlabel( 'Day', 'FontSize', 18, 'FontWeight', 'bold' );
+    ylabel( 'Fraction of Correct Switches', 'FontSize', 18, 'FontWeight', 'bold' );
+    set( gca, 'YTick', [0.25 0.5 1.0], 'FontSize', 16, 'FontWeight', 'bold');
+    ylim([0 1]);
+    
+    fig = P;  
+end
 
