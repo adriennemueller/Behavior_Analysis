@@ -8,8 +8,8 @@ function rslt = make_LP_struct()
 
     files_list = {  'Experiment-garf-03-04-2014(01).bhv', ...
                     'Experiment-garf-03-05-2014.bhv', ...
-                    'Experiment-garf-03-06-2014.bhv'
-
+                    'Experiment-garf-03-06-2014.bhv', ...
+                    'Experiment-garf-03-07-2014(01).bhv'
                  };
 
     % Load Bhv File
