@@ -6,6 +6,11 @@ function fig = make_DistractorLearning_Fig( LP )
     for i = 1:length(LP)
         bhv(i).responsetype = calc_response_type( LP(i).CodeNumbers );
         bhv(i).rspcount = calc_num_response_types( bhv(i).responsetype, LP(i).BlockNumber );
+        
+        % Get N of trials for each bar
+        bhv(i).b1_n = sum(LP(i).BlockNumber == 1);
+        bhv(i).b2_n = sum(LP(i).BlockNumber == 2);
+    
     end
     
     % Plot Smoothed Behavior over Time in multi-plot
@@ -90,6 +95,7 @@ end
 function fig = make_multidayhist( bhv )
     % Make Matrix out of bhv.rspcount
     histmat = [];
+    ns = {};
     
     [m n] = size( bhv(1).rspcount );
     
@@ -97,6 +103,8 @@ function fig = make_multidayhist( bhv )
     for i = 1:length(bhv)
        histmat = vertcat( histmat, bhv(i).rspcount);
        histmat = vertcat( histmat, zeros(1,n));
+       
+       ns{end+1} = bhv(i).b1_n;  ns{end+1} = bhv(i).b2_n; ns{end+1} = '';
     end
     
     [newm newn] = size( histmat );
@@ -116,6 +124,9 @@ function fig = make_multidayhist( bhv )
     set(gca, 'XLim', [0 (newm+1)], 'XTick', xtickpos, 'XTickLabel', 1:length(bhv));
     ylim([0 1]);
 
+  
+    text( 1:newm, repmat(0, 1, newm), ns, 'VerticalAlignment', 'bottom', 'HorizontalAlignment', 'center', 'FontSize', 12, 'FontWeight', 'bold', 'Color', 'white'); 
+    
     fig = H;
     
 end
