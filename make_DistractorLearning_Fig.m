@@ -29,26 +29,26 @@ function rslt = calc_response_type( codes )
     % Sort
     for i = 1:length( codes )
         currcodes = cell2mat(codes(i)); 
-        if contains_all(currcodes', [124 122 129])     % 1: Correctly Held, Distractor Same
+        if contains_all(currcodes', [124 122 129])      % 1: Correctly Held, Distractor Same SS
             vals = [vals 1];
-        elseif contains_all(currcodes', [124 123 129]) % 2: Correctly Released, Distractor Same
+        elseif contains_all(currcodes', [124 122 130])  % 2: Correctly Held, Distractor Different SD
             vals = [vals 2];
-        elseif contains_all(currcodes', [124 122 130]) % 3: Correctly Held, Distractor Different
+        elseif contains_all(currcodes', [124 123 129])  % 3: Correctly Released, Distractor Same DS
             vals = [vals 3];
-        elseif contains_all(currcodes', [124 123 130]) % 4: Correctly Release, Distractor Different
+        elseif contains_all(currcodes', [124 123 130])  % 4: Correctly Release, Distractor Different DD
             vals = [vals 4];
-        elseif contains_all(currcodes', [128 123 129])  % 5: Incorrectly Held, Distractor Same
+        elseif contains_all(currcodes', [127 122 129])  % 5: Incorrectly Released, Distractor Same SS
             vals = [vals 5];
-        elseif contains_all(currcodes', [127 122 129])  % 6: Incorrectly Released, Distractor Same
+        elseif contains_all(currcodes', [127 122 130])  % 6: Incorrectly Release, Distractor Different SD
             vals = [vals 6];
-        elseif contains_all(currcodes', [128 123 130])  % 7: Incorrectly Held, Distractor Different
+        elseif contains_all(currcodes', [128 123 129])  % 7: Incorrectly Held, Distractor Same DS
             vals = [vals 7];
-        elseif contains_all(currcodes', [127 122 130])  % 8: Incorrectly Release, Distractor Different
+        elseif contains_all(currcodes', [128 123 130])  % 8: Incorrectly Held, Distractor Different DD
             vals = [vals 8];
         elseif contains_all(currcodes', 126)            % 9: Released too soon.
             vals = [vals 9];
-        elseif contains_all(currcodes', 125)
-            vals = [vals 10];                           % 10: Didn't push lever down during fixation cue.
+        elseif contains_all(currcodes', 125)            % 10: Didn't push lever down during fixation cue.
+            vals = [vals 10];                           
         else
             vals = [vals 11];                           % 11: Unknown?!
             disp( 'No compatiable Code Combinations found.');
@@ -58,14 +58,14 @@ function rslt = calc_response_type( codes )
     rslt = vals;
     
     % Rslt Code will be:
-    % 1: Correctly Held, Distractor Same
-    % 2: Correctly Released, Distractor Same
-    % 3: Correctly Held, Distractor Different
-    % 4: Correctly Release, Distractor Different
-    % 5: Incorrectly Held, Distractor Same
-    % 6: Incorrectly Released, Distractor Same
-    % 7: Incorrectly Held, Distractor Different
-    % 8: Incorrectly Release, Distractor Different
+    % 1: Correctly Held, Distractor Same SS
+    % 2: Correctly Held, Distractor Different SD
+    % 3: Correctly Released, Distractor Same DS
+    % 4: Correctly Release, Distractor Different DD
+    % 5: Incorrectly Released, Distractor Same SS
+    % 6: Incorrectly Release, Distractor Different SD
+    % 7: Incorrectly Held, Distractor Same DS
+    % 8: Incorrectly Held, Distractor Different DD
     % 9: Released too soon.
     %10: Unknown
    
@@ -109,7 +109,7 @@ function fig = make_multidayhist( bhv )
         set(H(n),'facecolor',C(n,:));
     end
     
-    legend( H, {'Correct SS', 'Correct DS', 'Correct SD', 'Correct DD', 'FN DS', 'FP SS', 'FN DD', 'FP SD', 'False Start', 'No Start'}, 'Location', 'Best');
+    legend( H, {'Correct SS', 'Correct SD', 'Correct DS', 'Correct DD', 'FP SS', 'FP SD', 'FN DS', 'FN DD', 'False Release', 'No Start'}, 'Location', 'Best');
     xlabel( 'Day', 'FontSize', 18, 'FontWeight', 'bold' );
     ylabel( 'Fraction of Total', 'FontSize', 18, 'FontWeight', 'bold' );
     set( gca, 'YTick', [0.25, 0.5, 0.75], 'FontSize', 16, 'FontWeight', 'bold');
