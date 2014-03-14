@@ -6,7 +6,8 @@ function rslt = make_LPDist_struct()
     directory = '/Users/eddi/Documents/MATLAB/monkeylogic/lp/';
 
     files_list = {  'Experiment-garf-03-12-2014.bhv', ...
-                    'Experiment-garf-03-13-2014.bhv'
+                    'Experiment-garf-03-13-2014.bhv', ...
+                    'Experiment-garf-03-14-2014_01.bhv'
                  };
 
     % Load Bhv File
