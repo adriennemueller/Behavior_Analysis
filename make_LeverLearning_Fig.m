@@ -90,7 +90,7 @@ function rslt = findCorrectSwitches( tes, ems )
             numSwitches = numSwitches+1;
         end
         
-        if sum((122 == trial1ems)) && sum((122 == trial2ems)) && sum((123 == trial3ems))
+        if sum((122 == trial1ems)) && sum((122 == trial2ems)) && sum((123 == trial3ems)) && ~sum((130 == trial3ems))
             numSwitches = numSwitches+1;
         end
         
@@ -98,7 +98,7 @@ function rslt = findCorrectSwitches( tes, ems )
             numSwitches = numSwitches+1;
         end
 
-        if sum((123 == trial1ems)) && sum((123 == trial2ems)) && sum((122 == trial3ems))
+        if sum((123 == trial1ems)) && sum((123 == trial2ems)) && sum((122 == trial3ems)) && ~sum(sum(129 == trial3ems))
             numSwitches = numSwitches+1;
         end
 
