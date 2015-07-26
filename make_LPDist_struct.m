@@ -3,11 +3,12 @@ function rslt = make_LPDist_struct()
     % File Directory Information
 
     path(path,'../monkeylogic');
-    directory = '/Users/eddi/Documents/MATLAB/monkeylogic/lp/';
+    directory = '/Volumes/Olaf/Data/Behavior/Lever_Training/Garf/';
 
     files_list = {  'Experiment-garf-03-12-2014.bhv', ...
                     'Experiment-garf-03-13-2014.bhv', ...
-                    'Experiment-garf-03-14-2014_01.bhv'
+                    'Experiment-garf-03-14-2014_01.bhv', ...
+                    'Experiment-garf-03-17-2014.bhv'
                  };
 
     % Load Bhv File
