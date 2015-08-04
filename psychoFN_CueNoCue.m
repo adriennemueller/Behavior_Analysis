@@ -49,9 +49,9 @@ function rslt = get_perc_corr( cue_trials, nocue_trials )
     nocue_tes = nocue_trials(:,1);
     
     rslt(1,1) = length(find( (cue_tes == 0) & (cue_difficulties <= 30) ));
-    rslt(2,1) = length(find( (cue_tes == 4) & (cue_difficulties <= 30) )) +  length(find( (cue_tes == 5) & (cue_difficulties <= 20) ));
+    rslt(2,1) = length(find( (cue_tes == 4) & (cue_difficulties <= 30) )) +  length(find( (cue_tes == 5) & (cue_difficulties <= 30) ));
     rslt(3,1) = length(find( (nocue_tes == 0) & (nocue_difficulties <= 30) ));
-    rslt(4,1) = length(find( (nocue_tes == 4) & (nocue_difficulties <= 30) )) +  length(find( (nocue_tes == 5) & (nocue_difficulties <= 20) ));
+    rslt(4,1) = length(find( (nocue_tes == 4) & (nocue_difficulties <= 30) )) +  length(find( (nocue_tes == 5) & (nocue_difficulties <= 30) ));
     
     rslt(1,2) = length(find( (cue_tes == 0) & (cue_difficulties > 30) & (cue_difficulties <= 60)));
     rslt(2,2) = length(find( (cue_tes == 4) & (cue_difficulties > 30) & (cue_difficulties <= 60))) + length(find( (cue_tes == 5) & (cue_difficulties > 30) & (cue_difficulties <= 60)));
