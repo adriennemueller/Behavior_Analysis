@@ -20,9 +20,16 @@ function rslt =  make_ErrorsByContrast( LP )
     C25 = perc_correct( TrialErrors, bhvContrast, 25 );
     
     figure();
-    bar( [C10 C15 C20 C25] );
-
-
+    bar( [C10 C15 C20 C25] * 100);
+    
+    AxisLabel_FontSize = 14; TickLabel_FontSize = 12;
+    set( gca, 'XTick', [1, 2, 3, 4], 'XTickLabel', {'10%', '15%', '20%', '25%' }, 'FontSize', TickLabel_FontSize,  ...
+         'FontWeight', 'Bold', 'YTick', [0 25 50 75 100]);
+    ylim( [0 100] );
+    %xlim([0.5 4.5]);  
+    xlabel( 'Contrast', 'FontSize', AxisLabel_FontSize, 'FontWeight', 'bold' );
+    ylabel( {'Percent Correct'}, 'FontSize', AxisLabel_FontSize, 'FontWeight', 'bold' );
+    box( gca, 'off');            
 end
 
 function rslt = get_contrast( contrastString )
