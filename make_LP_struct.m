@@ -50,7 +50,25 @@ function rslt = make_LP_struct()
              
 % Garf Cue/NoCue Distractor with Contrasts
     files_list = { 
-        'LP_Cue_NoCue_Blank_Fix_8Dir_MGS_Contrasts-Garf-03-21-2017.bhv'
+        %'LP_Cue_NoCue_Blank_Fix_8Dir_MGS_Contrasts-Garf-03-17-2017.bhv' % Not Great
+
+        
+        'LP_Cue_NoCue_Blank_Fix_8Dir_MGS_Contrasts-Garf-03-21-2017.bhv' % Okay
+        'LP_Cue_NoCue_Blank_Fix_8Dir_MGS_Contrasts-Garf-04-19-2017.bhv' % Nice
+        %'LP_Cue_NoCue_Blank_Fix_8Dir_MGS_Contrasts-Garf-04-20-2017.bhv' % Bad
+        
+        'LP_Cue_NoCue_Blank_Fix_8Dir_MGS_Contrasts-Garf-04-24-2017.bhv' % Not Great
+        'LP_Cue_NoCue_Blank_Fix_8Dir_MGS_Contrasts-Garf-04-25-2017.bhv' % Not Great
+        'LP_Cue_NoCue_Blank_Fix_8Dir_MGS_Contrasts-Garf-04-27-2017.bhv' % Not Great
+        'LP_Cue_NoCue_Blank_Fix_8Dir_MGS_Contrasts-Garf-04-28-2017.bhv' % Shows High 15%
+        
+        'LP_Cue_NoCue_Blank_Fix_8Dir_MGS_Contrasts-Garf-06-15-2017_01.bhv' % Not Great
+        %'LP_Cue_NoCue_Blank_Fix_8Dir_MGS_Contrasts-Garf-06-16-2017_01.bhv' % Shows low 20%
+        'LP_Cue_NoCue_Blank_Fix_8Dir_MGS_Contrasts-Garf-06-18-2017.bhv' % Shows low 20%
+        
+        'LP_Cue_NoCue_Blank_Fix_8Dir_MGS_Contrasts-Garf-06-19-2017.bhv' % Looks Okay, Low 20%
+        'LP_Cue_NoCue_Blank_Fix_8Dir_MGS_Contrasts-Garf-06-20-2017.bhv' % High 15%
+        
     };           
 
              
