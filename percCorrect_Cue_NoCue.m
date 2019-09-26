@@ -36,14 +36,14 @@ function rslt = percCorrect_Cue_NoCue( Bhv_struct )
     figure();
     bar(rslt);
     ylabel( 'Percent Correct' );
-    ylim([0 100]);
+    ylim([0 110]);
     set(gca, 'YTick', [25 50 75 100]);
     set(gca,'XTick',[1 2]);
     set(gca,'XTickLabel', {'Cued', 'Uncued'});
     set(gca, 'FontSize', 18);
     text(1, rslt(1), [num2str(rslt(1)) ' %'], 'FontSize', 16, 'HorizontalAlignment', 'center', 'VerticalAlignment', 'bottom');
     text(2, rslt(2), [num2str(rslt(2)) ' %'], 'FontSize', 16, 'HorizontalAlignment', 'center', 'VerticalAlignment', 'bottom');
-    text(2.2, 90, ['p = ' num2str(round(pval,4))],  'FontSize', 16, 'HorizontalAlignment', 'center', 'VerticalAlignment', 'bottom');
+    text(2.7, 100, ['p = ' num2str(round(pval,4))],  'FontSize', 16, 'HorizontalAlignment', 'center', 'VerticalAlignment', 'bottom');
 
 
 end
